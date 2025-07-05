@@ -17,7 +17,7 @@ import pytz
 
 load_dotenv()
 app = Flask(__name__)
-app.config['ENV'] = 'production'  # Optional, for additional clarity
+
 app.config['DEBUG'] = False       # Ensure debugging is off
 app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
@@ -65,14 +65,8 @@ locations = {
     # Add more locations as needed
 }
 
-@app.route('/')
-def index():
-    return render_template('mm.html') 
-@app.route('/mm')
-def mm():
-    return render_template('mm.html')  # Or any other template
 
-@app.route('/weather-map')
+
 def map_view():
     fig = plt.figure(figsize=(12, 12))
     ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
@@ -191,7 +185,5 @@ def fetch_weather_data(city, lat, lon):
 if __name__ == '__main__':
     app.run(debug=False)
 @app.route('/')
-def home():
-    return render_template('mm.html')
 
 
