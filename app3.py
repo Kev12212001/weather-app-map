@@ -90,9 +90,6 @@ locations = {
 }
 
 @app3.route('/')
-def mm():
-    # Render the HTML page
-    return render_template('mm.html')
 
 @app3.route('/weather-map')
 def map3_view():
@@ -157,7 +154,7 @@ def map3_view():
     contour = ax.contourf(lon, lat, grid_temperature, levels= temp_levels, cmap=cmap, alpha= 0.6, transform=ccrs.PlateCarree())
     # Add colorbar for cloud cover
     cbar = fig.colorbar(contour, ax=ax, orientation="vertical", shrink=0.5, label="Temperature (°F)")
-    cbar.set_ticks(np.arange(45, 96, 2))
+    cbar.set_ticks(np.arange(45, 101, 2))
 
     # Step 5: Plot data for each location (cities)
     for city, coords in locations.items():

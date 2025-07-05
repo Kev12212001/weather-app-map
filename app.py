@@ -1,5 +1,4 @@
 from flask import Flask, send_file, render_template
-from flask_sqlalchemy import SQLAlchemy
 import io
 import requests
 import os
@@ -15,13 +14,9 @@ from datetime import datetime
 from dotenv import load_dotenv
 import pytz
 
-load_dotenv()
 app = Flask(__name__)
 
-app.config['DEBUG'] = False       # Ensure debugging is off
-app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
-db = SQLAlchemy(app)
+
 # Your API key for the weather data
 API_KEY = '6e1f7ca9bda347cdb5a5b9259a0bafc9'
 
@@ -65,8 +60,9 @@ locations = {
     # Add more locations as needed
 }
 
+@app.route('/')
 
-
+@app.route('/weather-map')
 def map_view():
     fig = plt.figure(figsize=(12, 12))
     ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
@@ -183,7 +179,8 @@ def fetch_weather_data(city, lat, lon):
     return {}
 
 if __name__ == '__main__':
-    app.run(debug=False)
-@app.route('/')
+    app.run(debug=True)
+
+
 
 

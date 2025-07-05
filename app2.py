@@ -95,9 +95,6 @@ locations = {
 }
 
 @app2.route('/')
-def mm():
-    # Render the HTML page
-    return render_template('mm.html')
 
 @app2.route('/weather-map')
 def map2_view():
