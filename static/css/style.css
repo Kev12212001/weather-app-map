@@ -1,0 +1,232 @@
+    <style>
+	.weather-details {
+	    display: flex;
+	    gap: 20px; /* Adds spacing between columns */
+	    justify-content: center; /* Distribute columns evenly */
+	    width: 100%; /* Ensures it takes up the full width of the container */
+	    max-width: 2500px; /* Optional: set max width to control width of the columns */
+	}
+
+ 	.scroll-box {
+            padding: 20px; /* Add padding for inner content */
+ 	    border-radius: 8px;
+	    border: 2px solid lightblue;
+	    box-sizing: border-box;
+	    background-color: darkblue; /* Background color */
+	    color: white; /* Text color */
+	    overflow-y: visible; /* Enable scrolling if content exceeds box */
+	    max-height: none; /* Limit height for better readability */
+	    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Optional: Add some shadow */
+	    margin-bottom: 40px;
+	    width: 100%;
+	    overflow-x: visible;
+    	}
+
+	.scroll-box img {
+  	    max-width: 100%; /* Ensures images do not exceed container width */
+  	    height: auto; /* Maintains aspect ratio */
+  	    object-fit: contain; /* Ensures images fit within the container without distortion */
+	}
+
+
+	body {
+   	    font-family: Arial, sans-serif;
+ 	    background-image:  url('{{ url_for('static', filename='images/lightning.jpg') }}'); /* Main background */
+	    background-size: cover; /* Ensure it covers the body */
+	    background-position: top center; /* Center the image */
+	    text-align: center;
+	    color: white;
+	    position: relative; /* Position for pseudo-element */
+	    height: 100%; /* Full viewport height */
+	    display: flex; /* Use flexbox to center content */
+ 	    flex-direction: column; /* Stack the content vertically */
+	    align-items: center; /* Center horizontally */
+	    justify-content: center; /* Center vertically */
+	    margin: 0;
+	    padding: 0;
+	    overflow-x: hidden;
+	}
+
+        h1 {
+	    margin: 20px 0;
+            margin-bottom: 20px 0; 
+	    font-family: 'Alfa Slab One', sans-serif;
+	    color: #00bbf0; 
+        }
+        p {
+    word-wrap: break-word;  /* Breaks the long URLs into the next line if needed */
+    overflow-wrap: break-word;  /* Works with older browsers that use 'overflow-wrap' */
+        }
+
+        .weather-container {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center the content */
+            margin: 0px; /* Reduce margin */
+        }
+
+        .tabs {
+            display: flex;
+	    margin-bottom: 50px;
+        }
+        .tab {
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #007bff; 
+            color: white; 
+            border-radius: 5px; 
+            margin: 0 5px; 
+            transition: background-color 0.3s;
+        }
+        .tab:hover {
+            background-color: #0056b3; 
+        }
+        .subtabs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .subtab {
+            text-decoration: none;
+            padding: 8px 12px;
+            background-color: #0056b3; 
+            color: white; 
+            border-radius: 5px; 
+            margin: 0 5px; 
+            transition: background-color 0.3s;
+        }
+        .subtab:hover {
+            background-color: #003f7f; 
+        }
+	@media (max-width: 768px) {
+	    .weather-details {
+	        flex-direction: column;
+	    }
+
+	
+	    p {
+	        font-size: 1em;
+	    }
+
+	    .tabs {
+	        flex-direction: column;
+	        align-items: center;
+	    }
+
+	    .tab {
+	        padding: 10px;
+		margin: 5px;
+	        width: 100%;
+	    }
+	}
+	
+	@media (max-width: 600px) {
+	body {
+	    overflow-x: hidden;
+	}
+	
+	    #search-input, #search-button {
+	        width: 100%;
+	    }
+	
+	    #weather {
+	        font-size: 0.8em;
+	    }
+		
+	    .tabs {
+	        flex-direction: column;
+	    }
+	
+	    .tab {
+	        width: 100%;
+		margin: 5px;
+	        text-align: center;
+	    }
+	    .subtabs {
+	        flex-direction: column;
+	        align-items: center;
+	    }
+
+	    .subtab {
+	        padding: 10px;
+		margin: 5px;
+	        width: 100%;
+	    }
+	
+	    .weather-details {
+	        flex-direction: column;
+	    }
+            p6 {
+	        align-items: center;	
+	        max-width: 350px;
+            }
+	}
+
+	p {
+            padding: 15px; /* Add padding inside the paragraph */
+            border-radius: 8px; /* Rounded corners */
+            margin: 15px 0; /* Add spacing between paragraphs */
+	    line-height: 1.6;
+	    text-align: left;
+	    text-indent: 1em;
+        }
+
+
+	.navy-background {
+	    background-color:  rgba(0, 51, 102, 0.6); /* 0.8 = 30% opacity */
+	    color: white; /* Ensures text inside remains readable */
+	    width: 100vw; /* Full width of the page */
+	    min-height: 100vh; /* Full height of the viewport */
+	    display: flex; /* Flexbox to center content */
+    	    align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+    	    padding: 20px; /* Add padding around the edges */
+    	    box-sizing: border-box; /* Include padding in size calculations */
+    	}
+    	.navy-content {
+	    width: 100%; /* Full width within the parent */
+	    max-width: 1200px; /* Limit the content width */
+	    padding: 20px; /* Add some padding */
+	    box-sizing: border-box; /* Include padding in size */
+        }	
+        .image-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        img {
+            width: 80%;
+            max-width: 800px;
+            height: auto;
+        }
+
+        .arrow-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically center the buttons */
+    position: relative;  /* Ensure buttons are positioned correctly */
+    width: 100%;
+    height: 100px; /* Fixed height for the arrow buttons container */
+
+        }
+
+        .arrow-btn {
+            font-size: 2rem;
+            color: white;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .arrow-btn:hover {
+            color: #00bbf0;
+        }
+
+        .arrow-buttons button {
+           
+    </style>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forecast Products</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap">
+</script>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6SMZD2E1P"></script>
+<script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q6SMZD2E1P');
+</script>
+<body>
+    <h1><u>Forecast Products</u></h1>
+    <div class="weather-container">
+        <div class="tabs">
+	    <a href="index.html" class="tab">Home</a>
+            <a href="kevsblog.html" class="tab">Blog</a>
+            <a href="chicago-weather.html" class="tab">Forecast Products</a>
+ 	    <a href="kevsphotos.html" class="tab">Photos</a>
+            <a href="about.html" class="tab">About</a>
+        </div>
+    </div>
+    <div class="navy-background">
+    <div class="navy-content">
+    <div class="scroll-box">
+    <h2 style="font-family: Segoe Print; color: skyblue;"><b><u>Surface Maps for Chicago</u></b></h2>
+    <div class="subtabs">
+        <a href="chicago-weather.html" class="tab">Public Forecast</a>
+        <a href="chicago-forecast-discussion.html" class="tab">Forecast Discussion</a>
+	<a href="chicago-hour-by-hour-forecast.html" class="tab">Hourly Forecast</a>
+	<a href="maps.html" class="tab">Surface Maps</a>
+	<a href="16-day-forecast.html" class="tab">16-Day Forecast</a>
+    </div>
+    <p style= "font-family: 'Arial', margin: 0px; sans-serif; font-size: 16px; color: skyblue; text-align: center;"><b>Surface Observations as of: 6/20/2025 4:30 PM CDT</b></p>
+                <!-- Image container for maps with arrows -->
+                <div class="image-container">
+                        <button class="arrow-btn" id="prev-btn">&#8592;</button> <!-- Left Arrow -->
+        	    <img src="{{ url_for('map_view') }}" alt="Surface Map" id="map-image">
+                        <button class="arrow-btn" id="next-btn">&#8594;</button> <!-- Right Arrow -->
+                    </div>
+                </div>
+
+
+    <p style="text-align: center;">
+        Questions? Suggestions? Inquiries? Please email Kevin O'Connell at kevin.oconnell@kevsweather.com
+    </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
